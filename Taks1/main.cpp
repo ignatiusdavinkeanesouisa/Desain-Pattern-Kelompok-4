@@ -145,6 +145,7 @@ public:
     }
 };
 
+
 int main() {
     // Modifikasi 1: mengganti generator menjadi random
     RandomInputGenerator inputGenerator;
