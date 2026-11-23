@@ -304,18 +304,31 @@ public:
 // Skor dasar = peringkat hand hasil checker chain
 class PokerScoringRule : public IScoringRule {
 private:
+
     HighCardChecker highCardChecker;
+
     PairChecker pairChecker;
+
     TwoPairChecker twoPairChecker;
+
     ThreeOfAKindChecker threeOfAKindChecker;
+
     StraightChecker straightChecker;
+
     FlushChecker flushChecker;
+
     FullHouseChecker fullHouseChecker;
+    
     FourOfAKindChecker fourOfAKindChecker;
+    
     StraightFlushChecker straightFlushChecker;
+    
     RoyalFlushChecker royalFlushChecker;
+    
     FiveOfAKindChecker fiveOfAKindChecker;
+    
     FlushHouseChecker flushHouseChecker;
+    
     FlushFiveChecker flushFiveChecker;
 
     PokerHandChecker* firstChecker;
@@ -324,17 +337,29 @@ public:
     PokerScoringRule() : firstChecker(&flushFiveChecker) {
         // Urutan dari hand TERTINGGI ke TERENDAH supaya
         // yang terdeteksi selalu hand terbaik.
+
         flushFiveChecker.setNext(&flushHouseChecker);
+
         flushHouseChecker.setNext(&fiveOfAKindChecker);
+
         fiveOfAKindChecker.setNext(&royalFlushChecker);
+
         royalFlushChecker.setNext(&straightFlushChecker);
+
         straightFlushChecker.setNext(&fourOfAKindChecker);
+
         fourOfAKindChecker.setNext(&fullHouseChecker);
+
         fullHouseChecker.setNext(&flushChecker);
+
         flushChecker.setNext(&straightChecker);
+
         straightChecker.setNext(&threeOfAKindChecker);
+
         threeOfAKindChecker.setNext(&twoPairChecker);
+
         twoPairChecker.setNext(&pairChecker);
+
         pairChecker.setNext(&highCardChecker);
     }
 
@@ -347,6 +372,7 @@ public:
         return static_cast<int>(rank);
     }
 };
+
 
 // 3. Interface untuk menghitung reward
 class IRewardRule {
